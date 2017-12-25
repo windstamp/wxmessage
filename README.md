@@ -3,11 +3,13 @@ A simple weixin robot program which can auto send messages to some given friends
 
 1. conf.json for configure ipaddr, port, and dbno of Redis.
 2. friends.txt for friends wait to send messages.
-3. setup.py for set up initialization.
+3. setup.py for set up initialization to test wxmessage.py.
 4. reset.py for reset the whole stuff.
-5. spider_xxx.py for spider messages from some online website.
+5. reload.py for reload the configurations.
+6. info.py for query infos on redis.
+7. spider_xxx.py for spider messages from some online website.
 - spider_qsbk.py for spider messages from http://www.qiushibaike.com/
-6. wxmessage.py for auto send messages from the spider to given friends.
+8. wxmessage.py for auto send messages from the spider to given friends.
 
 # Reference
 - https://github.com/PP8818/Python-Projects

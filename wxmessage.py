@@ -12,8 +12,8 @@ import redis
 import time
 import tool
 
-debug = True
-# debug = False
+# debug = True
+debug = False
 
 MSG_LENGTH = 10
 INCR = 10
@@ -38,10 +38,10 @@ timeList.append(14 * 3600 + 15 * 60 + 55)
 timeList.append(15 * 3600 + 15 * 60 + 40)
 timeList.append(16 * 3600 + 15 * 60 + 51)
 timeList.append(17 * 3600 + 15 * 60 + 19)
-timeList.append(18 * 3600 + 18 * 60 + 32)
-timeList.append(19 * 3600 + 47 * 60 + 48)
-timeList.append(20 * 3600 + 46 * 60 + 30)
-timeList.append(21 * 3600 + 14 * 60 + 50)
+timeList.append(18 * 3600 + 15 * 60 + 32)
+timeList.append(19 * 3600 + 15 * 60 + 48)
+timeList.append(20 * 3600 + 15 * 60 + 30)
+timeList.append(21 * 3600 + 15 * 60 + 50)
 timeList.append(22 * 3600 + 15 * 60 + 10)
 #timeList.append(23 * 3600 + 56 * 60 + 10)
 timeList.sort(reverse=True)
@@ -93,8 +93,8 @@ class WxMessage(object):
     	
         total_sec = srcTime.hour * 3600 + srcTime.minute * 60 + srcTime.second
         nextTime = srcTime - dt.timedelta(seconds=total_sec)
-        print('total_sec = %d' % total_sec)
-        print(dt.datetime.strftime(nextTime, '%Y-%m-%d %H:%M:%S'))	
+        # print('total_sec = %d' % total_sec)
+        # print(dt.datetime.strftime(nextTime, '%Y-%m-%d %H:%M:%S'))	
     	
         if total_sec > timeListFinish:
             nextTime += dt.timedelta(days=1)
@@ -103,7 +103,7 @@ class WxMessage(object):
     
         i = 1
         while i < lenList:
-            print('i=%d' % i)
+            # print('i=%d' % i)
             if total_sec > timeList[i]:
                 nextTime += dt.timedelta(seconds=timeList[i - 1])
     			

@@ -6,7 +6,7 @@ import json
 import redis
 import tool
 
-def reset():
+def reload():
     # load conf.json 
     with open("conf.json",'r') as conf_file:
         conf = json.load(conf_file)
@@ -24,16 +24,13 @@ def reset():
 	
 	# clear
     conn.delete('friend_name_list')
-    conn.delete('index')
-    conn.delete('message_pool')
-    conn.delete('message_pool_crc')
-    conn.delete('last_hot_msg_update_timestamp')
 	
 	# load friends
     with open("friends.txt",'r') as friends_file:
         for line in friends_file.readlines():
             if not len(line) or line.startswith('#'):
                 continue
+            line = line.replace('\n', '')
             print('line = ', line)
             conn.rpush('friend_name_list', line)
 	
@@ -43,12 +40,6 @@ def reset():
         # friend_name = unicode(friend_name, 'utf-8')	# python 2
         friend_name = friend_name.decode('utf-8').replace('\n', '')		# python 3
         print('friend_name = ', friend_name )
-	
-	# initial message index
-    conn.set('index', 0)
-    index = conn.get('index')
-    index = int(index)
-    print('index = ', index)
 
 if __name__ == '__main__':
-    reset()
+    reload()

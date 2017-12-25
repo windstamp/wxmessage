@@ -36,13 +36,14 @@ class SpiderQSBK(object):
         self.last_hot_msg_update_timestamp = self.conn.get('last_hot_msg_update_timestamp')
         if not self.last_hot_msg_update_timestamp:
             self.last_hot_msg_update_timestamp = 0
+        self.last_hot_msg_update_timestamp = int(self.last_hot_msg_update_timestamp)
         self.interval = 5 * 60		# 5 minutes
 		
-        print('self.last_hot_msg_update_timestamp = ', self.last_hot_msg_update_timestamp)
-        print('self.interval = ', self.interval)
+        # print('self.last_hot_msg_update_timestamp = ', self.last_hot_msg_update_timestamp)
+        # print('self.interval = ', self.interval)
 		
         self.length = self.conn.llen('message_pool')
-        print('self.length = ', self.length)
+        print('message_pool length is: ', self.length)
 		
         ua = UserAgent()
         self.headers = {'UserAgent' : 'us.random'}
@@ -124,7 +125,7 @@ class SpiderQSBK(object):
             print('Is connected to Redis: ', self.conn.ping() )
             return
 		
-        for i in range(13, 14):
+        for i in range(13, 13):
         # for i in range(1, 14):
             url = self.domain_text + str(i)
             print('text_url = ', url)
